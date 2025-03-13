@@ -63,5 +63,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - brendancol
     - giancastro
+    - makepath-alex
     - RobertPincus
