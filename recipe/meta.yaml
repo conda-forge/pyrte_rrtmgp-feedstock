@@ -1,6 +1,5 @@
 {% set name = "pyrte_rrtmgp" %}
-{% set version = "0.0.6" %}
-{% set rte_rrtmgp_version = "1.8" %}
+{% set version = "0.0.7" %}
 
 package:
   name: {{ name|lower }}
@@ -8,54 +7,58 @@ package:
 
 source:
   - url: https://github.com/earth-system-radiation/pyRTE-RRTMGP/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: b161ac8b1ddca59eb994eb44ba8aabb9a596f50f24a8fd0886fea8c680e41a29
-  - url: https://github.com/earth-system-radiation/rte-rrtmgp/archive/refs/tags/v{{ rte_rrtmgp_version }}.tar.gz
-    fn: rte-rrtmgp-{{ rte_rrtmgp_version }}.tar.gz
-    sha256: e3830007529a3fb35727683ff990cac7e6792cdee4c9d9b07a55c969a97c95e5
-    folder: rte-rrtmgp
+    sha256: b53de2a06648f3bdd719dfea07d31fec7f266519a4de5a2028535c4ecf8f9808
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 2
-  skip: True  # [not linux]
+  number: 0
+  skip: true  # [win or py<311 or py>312]
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - numpy                                  # [build_platform != target_platform]
-    - pybind11                               # [build_platform != target_platform]
+    - numpy >=1.21.0                         # [build_platform != target_platform]
+    - pybind11 >=2.10.0                      # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
-    - {{ stdlib("c") }}
-    - cmake ==3.26.4
-    - make
+    - {{ stdlib('c') }}
+    - cmake >=3.18
+    - git >=2.44.0
+    - libuv >=1.44.2
+    - ninja
+    - python
 
   host:
-    - python
+    - numpy >=1.21.0
     - pip
-    - scikit-build-core
     - pybind11 >=2.10.0
-    - numpy
-    - xarray >=2023.5.0
-    - urllib3
-    - netcdf4 >=1.5.7
+    - python
+    - rte_rrtmgp ==v1.9.1
+    - scikit-build-core
 
   run:
-    - python
+    - netcdf4 >=1.7.2
     - numpy >=1.21.0
+    - pytest >=7.4
+    - python
+    - requests >=2.4.0
+    - rte_rrtmgp ==v1.9.1
     - xarray >=2023.5.0
-    - urllib3
-    - netcdf4 >=1.5.7
 
 test:
   imports:
     - pyrte_rrtmgp
-  commands:
-    - pip check
   requires:
-    - pip
+    - netcdf4 >=1.7.2
+    - numpy >=1.21
+    - pytest >=7.4
+    - requests >=2.4.0
+    - rte_rrtmgp ==v1.9.1
+    - xarray >=2023.5.0
+  commands:
+    - pyrte_rrtmgp run_tests
 
 about:
   home: https://github.com/earth-system-radiation/pyRTE-RRTMGP
