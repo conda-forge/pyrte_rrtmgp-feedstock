@@ -11,7 +11,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 2
+  number: 1
   skip: true  # [win or py<311 or py>312]
 
 requirements:
@@ -22,6 +22,7 @@ requirements:
     - pybind11 >=2.10.0                      # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - cmake >=3.18
     - git >=2.44.0
     - libuv >=1.44.2
