@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/earth-system-radiation/pyRTE-RRTMGP/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: b6d5334adcf1afb6f550be7d7855ecd2a45ac87812106e5088301c12c5d3b520
+    sha256: 3f48ef911d95ffcd5f29bb241253c71fa65931682a2bce4e05aaa3108d2fc778
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
