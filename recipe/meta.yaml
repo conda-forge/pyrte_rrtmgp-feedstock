@@ -41,10 +41,12 @@ requirements:
     - netcdf4 >=1.7.2
     - numpy >=1.21.0
     - pytest >=7.4
+    - pytest-cov >=3.0
     - python
     - requests >=2.4.0
     - rte_rrtmgp ==1.9.1
     - xarray >=2023.5.0
+    - dask >=2023.5.0
 
 test:
   imports:
@@ -53,9 +55,11 @@ test:
     - netcdf4 >=1.7.2
     - numpy >=1.21
     - pytest >=7.4
+    - pytest-cov >=3.0
     - requests >=2.4.0
     - rte_rrtmgp ==1.9.1
     - xarray >=2023.5.0
+    - dask >=2023.5.0
   commands:
     - pyrte_rrtmgp run_tests
 
