@@ -1,5 +1,5 @@
 {% set name = "pyrte_rrtmgp" %}
-{% set version = "0.1.4" %}
+{% set version = "0.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/earth-system-radiation/pyRTE-RRTMGP/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: ca6b236567b693c70c1e772edec4c4cb3678da481276b7e50f0e86885b3aab95
+    sha256: f36225ded6ad1ba99753dbf806bc7d4424cc6b0ffe1bfe682ce1a4ea14852307
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
