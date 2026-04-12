@@ -27,12 +27,16 @@ requirements:
       then: numpy >=1.21.0
     - if: build_platform != target_platform
       then: pybind11 >=2.10.0
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ stdlib('c') }}                # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ stdlib('m2w64_c') }}          # [win]
+    - if: build_platform != "win"
+      then: |
+      - {{ compiler('c') }} 
+      - {{ compiler('cxx') }} 
+      - {{ stdlib('c') }} 
+    - if: build_platform == "win"
+      then: |
+      - {{ compiler('m2w64_cxx') }}
+      - {{ compiler('m2w64_c') }} 
+      - {{ stdlib('m2w64_c') }}
   
     - cmake >=3.18
     - git >=2.44.0
