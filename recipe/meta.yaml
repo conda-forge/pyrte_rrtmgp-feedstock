@@ -34,7 +34,7 @@ requirements:
     - pip
     - pybind11 >=2.10.0
     - python
-    - rte_rrtmgp ==1.9.1
+    - rte_rrtmgp ==1.9.2
     - scikit-build-core
 
   run:
@@ -44,7 +44,8 @@ requirements:
     - pytest-cov >=3.0
     - python
     - requests >=2.4.0
-    - rte_rrtmgp ==1.9.1
+    - pandas <3.0.0
+    - rte_rrtmgp ==1.9.2
     - xarray >=2023.5.0
     - dask >=2023.5.0
 
@@ -57,7 +58,8 @@ test:
     - pytest >=7.4
     - pytest-cov >=3.0
     - requests >=2.4.0
-    - rte_rrtmgp ==1.9.1
+    - pandas <3.0.0
+    - rte_rrtmgp ==1.9.2
     - xarray >=2023.5.0
     - dask >=2023.5.0
   commands:
