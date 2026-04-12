@@ -28,12 +28,12 @@ requirements:
     - if: build_platform != target_platform
       then: pybind11 >=2.10.0
     - if: build_platform != "win"
-      then: |
+      then:
       - {{ compiler('c') }} 
       - {{ compiler('cxx') }} 
       - {{ stdlib('c') }} 
     - if: build_platform == "win"
-      then: |
+      then:
       - {{ compiler('m2w64_cxx') }}
       - {{ compiler('m2w64_c') }} 
       - {{ stdlib('m2w64_c') }}
