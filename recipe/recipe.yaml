@@ -13,8 +13,8 @@ source:
     sha256: cf9cae2b5bdf65db18d62acd7325073954673f7b10ef9d64b969e0d76ed3b21a
 
 build:
-  number: 1
-  skip: win or match(python, "<3.11") or match(python, ">3.14")
+  number: 2
+  skip: match(python, "<3.11") or match(python, ">3.14")
   script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -27,9 +27,16 @@ requirements:
       then: numpy >=1.21.0
     - if: build_platform != target_platform
       then: pybind11 >=2.10.0
-    - ${{ compiler('c') }}
-    - ${{ compiler('cxx') }}
-    - ${{ stdlib('c') }}
+    - if: target_platform != "win"
+      then:
+      - ${{ compiler('c') }} 
+      - ${{ compiler('cxx') }}
+      - ${{ stdlib('c') }}
+      else:
+      - ${{ compiler('m2w64_cxx') }}
+      - ${{ compiler('m2w64_c') }} 
+      - ${{ stdlib('m2w64_c') }}
+  
     - cmake >=3.18
     - git >=2.44.0
     - libuv >=1.44.2
