@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyrte_rrtmgp
-  version: "0.2.2"
+  version: "0.2.3"
 
 package:
   name: ${{ name|lower }}
@@ -10,23 +10,21 @@ package:
 
 source:
   - url: https://github.com/earth-system-radiation/pyRTE-RRTMGP/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: cf9cae2b5bdf65db18d62acd7325073954673f7b10ef9d64b969e0d76ed3b21a
+    sha256: b027829536908cab2086f475eaf687c90977412dfc8600f5d7ceea99a687d6bc
 
 build:
-  number: 1
+  number: 0
   skip: win or match(python, "<3.11") or match(python, ">3.14")
   script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - if: build_platform != target_platform
-      then: python
-    - if: build_platform != target_platform
-      then: cross-python_${{ target_platform }}
-    - if: build_platform != target_platform
-      then: numpy >=1.21.0
-    - if: build_platform != target_platform
-      then: pybind11 >=2.10.0
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - numpy >=1.21.0
+        - pybind11 >=2.10.0
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
