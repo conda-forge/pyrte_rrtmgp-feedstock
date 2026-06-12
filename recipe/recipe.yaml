@@ -10,7 +10,7 @@ package:
 
 source:
   - url: https://github.com/earth-system-radiation/pyRTE-RRTMGP/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    sha256: 1cb2b7d50c0a34c0de679405fbe6ec7e40a143bd3cb509681ad3a326ca1cca12
 
 build:
   number: 0
