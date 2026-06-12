@@ -50,9 +50,9 @@ requirements:
     - rte_rrtmgp ==1.9.2
     - xarray >=2023.5.0
     - dask >=2023.5.0
-    - scipy>1.0.0
-    - numba>=0.64.0
-    - molmass>=2025.12.12
+    - scipy >1.0.0
+    - numba >=0.64.0
+    - molmass >=2025.12.12
 
 tests:
   - python:
@@ -69,9 +69,9 @@ tests:
         - rte_rrtmgp ==1.9.2
         - xarray >=2023.5.0
         - dask >=2023.5.0
-        - scipy>1.0.0
-        - numba>=0.64.0
-        - molmass>=2025.12.12
+        - scipy >1.0.0
+        - numba >=0.64.0
+        - molmass >=2025.12.12
     script:
       - pyrte_rrtmgp run_tests
 
