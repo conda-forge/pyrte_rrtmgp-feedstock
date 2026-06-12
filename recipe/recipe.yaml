@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyrte_rrtmgp
-  version: "0.2.3"
+  version: "0.2.5"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   - url: https://github.com/earth-system-radiation/pyRTE-RRTMGP/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: b027829536908cab2086f475eaf687c90977412dfc8600f5d7ceea99a687d6bc
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 build:
   number: 0
@@ -47,10 +47,12 @@ requirements:
     - pytest-cov >=3.0
     - python
     - requests >=2.4.0
-    - pandas <3.0.0
     - rte_rrtmgp ==1.9.2
     - xarray >=2023.5.0
     - dask >=2023.5.0
+    - scipy>1.0.0
+    - numba>=0.64.0
+    - molmass>=2025.12.12
 
 tests:
   - python:
@@ -64,10 +66,12 @@ tests:
         - pytest >=7.4
         - pytest-cov >=3.0
         - requests >=2.4.0
-        - pandas <3.0.0
         - rte_rrtmgp ==1.9.2
         - xarray >=2023.5.0
         - dask >=2023.5.0
+        - scipy>1.0.0
+        - numba>=0.64.0
+        - molmass>=2025.12.12
     script:
       - pyrte_rrtmgp run_tests
 
